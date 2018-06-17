@@ -1,7 +1,7 @@
 pragma solidity ^0.4.21;
 
 import "./ERC223Receiver.sol";
-import "openzeppelin-solidity/contracts/token/ERC20/BasicToken.sol";
+import "openzeppelin-solidity/contracts/token/ERC20/ERC20Basic.sol";
 import "openzeppelin-solidity/contracts/ownership/Ownable.sol";
 
 contract TalkToExpertPayment is ERC223Receiver, Ownable {
@@ -43,7 +43,7 @@ contract TalkToExpertPayment is ERC223Receiver, Ownable {
    }
 
   function withdrawal() public onlyOwner returns (bool) {
-    BasicToken token = BasicToken(tokenContract);
+    ERC20Basic token = ERC20Basic(tokenContract);
     uint256 balance = token.balanceOf(this);
     token.transfer(msg.sender, balance);
     return true;
