@@ -1,4 +1,4 @@
-pragma solidity ^0.4.21;
+pragma solidity ^0.4.24;
 
 import "./ERC223Receiver.sol";
 import "openzeppelin-solidity/contracts/token/ERC20/ERC20Basic.sol";
@@ -11,7 +11,7 @@ contract TalkToExpertPayment is ERC223Receiver, Ownable {
 
   event TokenFallback(uint256 userId, uint256 value);
 
-  function TalkToExpertPayment(address _tokenContract) public Ownable() {
+  constructor(address _tokenContract) public Ownable() {
     tokenContract = _tokenContract;
   }
 
